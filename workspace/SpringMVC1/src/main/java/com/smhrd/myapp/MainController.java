@@ -1,0 +1,41 @@
+package com.smhrd.myapp;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+//페이지 위주
+//컨트롤러 지정, Model 객체(데이터 저장) 만들기 + View 반환(String) 
+@Controller
+public class MainController {
+	
+	//요청과 특정매서드 매핑
+	@RequestMapping(value="/main",method=RequestMethod.GET)
+	public String mainPage() {
+		return "main";
+	}
+	
+	@RequestMapping(value="/join",method=RequestMethod.GET)
+	public String joinPage() {
+		return "join";
+	}
+	//5버전 이상부터 사용가능
+	@GetMapping("/login")
+	public String loginPage() {
+		return "login";
+	}
+	
+	@GetMapping("/update")
+	public String updatePage() {
+		return "update";
+	}
+	@GetMapping("/select")
+	public String selectPage() {
+		return "select";
+	}
+//	@GetMapping("/delete")
+//	public String deletePage() {
+//		return "delete";
+//	}
+}

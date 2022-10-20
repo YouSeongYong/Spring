@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.mapper.MemberMapper">
+	<insert id="joinMember" parameterType="com.smhrd.model.Member">
+		insert into member values(#{id},#{pw},#{nick})
+	</insert>
+	
+	<select id="loginMember" parameterType="com.smhrd.model.Member" resultType="com.smhrd.model.Member">
+		select * from member where id=#{id} and pw=#{pw}
+	
+	</select>
+	
+	<update id="updateMember" parameterType="com.smhrd.model.Member">
+		update member set pw=#{pw},nick=#{nick} where id=#{id}
+	</update>
+	
+	<select id="selectAllMember" resultType="com.smhrd.model.Member">
+		select * from member
+	
+	</select>
+	
+	<delete id="deleteMember" parameterType="com.smhrd.model.Member" >
+		delete from member where id=#{id}
+	</delete>
+	
+	<!-- <delete id="deleteMember">
+			delete from member where id=#{id}
+			</delete> -->
+	
+</mapper>
