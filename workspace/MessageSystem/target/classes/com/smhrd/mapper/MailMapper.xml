@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.mapper.MailMapper">
+	<select id="selectMaillPaging"
+		resultType="com.smhrd.model.WebMessage">
+
+		select * from
+		(
+		
+		select@rownum := @rowNum+1 as rownum,wm.*
+		from (select @rownum := 0) R,webmessage wm
+		where @rownum &lt; #{cri.pageNum}*#{cri.amount} and receiveEmail=#{email}
+		
+		) a
+		where rownum > (#{cri.pageNum}-1)*#{cri.amount};
+	</select>
+
+
+</mapper>
