@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CommentMapper">
+	
+	<select id="selectAllCom" resultType="com.example.demo.model.Comment">
+		select * from comment where boardnum=#{boardnum} order by comnum desc
+	</select>
+	
+	<select id="countCom" resultType="int">
+		select count(*) from comment where boardnum=#{boardnum}
+	</select>
+	
+	<insert id="comAdd">
+		insert into comment values (null,#{boardnum},#{content},#{comwriter})
+	</insert>
+
+
+</mapper>

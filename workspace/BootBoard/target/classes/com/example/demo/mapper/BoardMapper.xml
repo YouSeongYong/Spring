@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BoardMapper">
+
+	<select id="selectAllBoard" resultType="com.example.demo.model.Board">
+		select * from board
+	</select>
+	
+	
+	<select id="selectOneBoard" resultType="com.example.demo.model.Board">
+		select * from board where boardnum =#{boardnum}
+	</select>
+	
+	<update id="setLikeNum">
+		update board
+		<set>
+			<if test='state.equals("plus")'>likenum=likenum +1,</if>
+			<if test='state.equals("minus")'>likenum= likenum-1,</if>
+		</set>
+		where boardnum =#{num}
+	</update>
+	
+	<select id="getLikeNum" resultType="int">
+	
+		select likenum from board where boardnum=#{boardnum}
+	</select>
+</mapper>
